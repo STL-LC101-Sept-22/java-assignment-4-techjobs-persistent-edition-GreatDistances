@@ -57,7 +57,8 @@ public class SkillController {
             model.addAttribute("skill", skill);
             return "skills/view";
         } else {
-            return "redirect:../"; // TODO - redirect lands at a 404, fix this somehow?
+            return "redirect:";
+            //return "redirect:../";  // TODO - redirect lands at a 404, fix this somehow?
         }
     }
 

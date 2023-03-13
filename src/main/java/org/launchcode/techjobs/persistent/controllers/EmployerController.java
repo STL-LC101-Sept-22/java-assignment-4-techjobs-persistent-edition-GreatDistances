@@ -53,7 +53,8 @@ public class EmployerController {
             model.addAttribute("employer", employer);
             return "employers/view";
         } else {
-            return "redirect:../";  // TODO - redirect lands at a 404, fix this somehow?
+            return "redirect:";
+            //return "redirect:../";  // TODO - redirect lands at a 404, fix this somehow?
         }
     }
 }
