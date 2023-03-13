@@ -4,6 +4,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
@@ -15,6 +16,7 @@ public abstract class AbstractEntity {
     private int id;
 
     @NotEmpty(message="Name field is required")
+    @NotNull
     @Size(max=100, message="Name must be 100 characters or less")
     private String name;
 
