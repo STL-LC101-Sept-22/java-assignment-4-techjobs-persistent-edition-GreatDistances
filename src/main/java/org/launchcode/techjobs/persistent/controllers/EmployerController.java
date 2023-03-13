@@ -16,7 +16,7 @@ import java.util.Optional;
 public class EmployerController {
 
     @Autowired
-    EmployerRepository employerRepository;
+    private EmployerRepository employerRepository;
 
     // MPW added displayAllEmployers method per assignment
     @GetMapping("index")
@@ -46,7 +46,8 @@ public class EmployerController {
     @GetMapping("view/{employerId}")
     public String displayViewEmployer(Model model, @PathVariable int employerId) {
 
-        Optional optEmployer = null;
+        //Optional optEmployer = null;
+        Optional optEmployer = employerRepository.findById(employerId); // MW added, part2, Controllers #4
         if (optEmployer.isPresent()) {
             Employer employer = (Employer) optEmployer.get();
             model.addAttribute("employer", employer);
