@@ -43,11 +43,11 @@ public class SkillController {
         }
 
         skillRepository.save(newSkill); // MW added
-        return "redirect:";
+        return "redirect:./index";
     }
 
     // displayViewSkill method
-    @GetMapping("view/{employerId}")
+    @GetMapping("view/{skillId}")
     public String displayViewSkill(Model model, @PathVariable int skillId) {
 
         //Optional optEmployer = null;
@@ -57,8 +57,7 @@ public class SkillController {
             model.addAttribute("skill", skill);
             return "skills/view";
         } else {
-            return "redirect:";
-            //return "redirect:../";  // TODO - redirect lands at a 404, fix this somehow?
+            return "redirect:../";
         }
     }
 
