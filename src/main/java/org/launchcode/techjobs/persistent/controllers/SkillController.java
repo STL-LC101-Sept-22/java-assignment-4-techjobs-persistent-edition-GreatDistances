@@ -20,10 +20,10 @@ public class SkillController {
     private SkillRepository skillRepository;
 
     // index method
-    @GetMapping("index")
-    public String displayAllSkills(Model model) {
+    @GetMapping("")
+    public String index(Model model) {
         model.addAttribute("skills", skillRepository.findAll());
-        return "skills/index";
+        return "index";
     }
 
     // displayAddSkillForm method

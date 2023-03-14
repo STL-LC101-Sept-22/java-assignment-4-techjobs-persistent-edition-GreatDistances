@@ -19,8 +19,8 @@ public class EmployerController {
     private EmployerRepository employerRepository;
 
     // MPW added displayAllEmployers method per assignment
-    @GetMapping("index")
-    public String displayAllEmployers(Model model) {
+    @GetMapping("")
+    public String index(Model model) {
         model.addAttribute("employers", employerRepository.findAll());
         return "employers/index";
     }

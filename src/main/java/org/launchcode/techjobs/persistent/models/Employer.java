@@ -12,8 +12,8 @@ import java.util.List;
 @Entity
 public class Employer extends AbstractEntity {
 
-    @OneToMany(mappedBy = "employer") // TODO is this mapping correct?  See part 3
-    @JoinColumn
+    @OneToMany
+    @JoinColumn(name = "employer_id")
     private final List<Job> jobs = new ArrayList<>();
 
     @NotEmpty(message="Location field is required")
