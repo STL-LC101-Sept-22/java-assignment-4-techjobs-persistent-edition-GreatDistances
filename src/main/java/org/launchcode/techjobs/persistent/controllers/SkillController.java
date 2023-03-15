@@ -15,25 +15,21 @@ import java.util.Optional;
 @RequestMapping("skills")
 public class SkillController {
 
-    // repository
     @Autowired
     private SkillRepository skillRepository;
 
-    // index method
     @GetMapping("")
     public String index(Model model) {
         model.addAttribute("skills", skillRepository.findAll());
-        return "index";
+        return "skills/index";
     }
 
-    // displayAddSkillForm method
     @GetMapping("add")
     public String displayAddSkillForm(Model model) {
         model.addAttribute(new Skill());
         return "skills/add";
     }
 
-    // processAddSkillForm method
     @PostMapping("add")
     public String processAddSkillForm(@ModelAttribute @Valid Skill newSkill,
                                          Errors errors, Model model) {
@@ -42,16 +38,14 @@ public class SkillController {
             return "skills/add";
         }
 
-        skillRepository.save(newSkill); // MW added
+        skillRepository.save(newSkill);
         return "redirect:";
     }
 
-    // displayViewSkill method
     @GetMapping("view/{skillId}")
     public String displayViewSkill(Model model, @PathVariable int skillId) {
 
-        //Optional optEmployer = null;
-        Optional optSkill = skillRepository.findById(skillId);
+        Optional optSkill = skillRepository.findById(skillId); // MW added, part2, Controllers #4
         if (optSkill.isPresent()) {
             Skill skill = (Skill) optSkill.get();
             model.addAttribute("skill", skill);
@@ -60,5 +54,4 @@ public class SkillController {
             return "redirect:../";
         }
     }
-
 }
