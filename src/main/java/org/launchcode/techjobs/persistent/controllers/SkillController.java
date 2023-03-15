@@ -43,7 +43,7 @@ public class SkillController {
         }
 
         skillRepository.save(newSkill); // MW added
-        return "redirect:./index";
+        return "redirect:";
     }
 
     // displayViewSkill method
