@@ -57,21 +57,15 @@ public class HomeController {
             return "add";
         }
 
+        // TODO - add some sort of conditional validation here ???
+        // if (employerRepository.findById(employerId).isEmpty()) {
         Optional<Employer> someEmployer = employerRepository.findById(employerId);
         newJob.setEmployer(someEmployer.get());
         List<Skill> skillObjs = (List<Skill>) skillRepository.findAllById(skills);
         newJob.setSkills(skillObjs);
         jobRepository.save(newJob);
+        // }
 
-//
-//        // TODO Part3 UpdatingHomeController #4 - ???
-//        if (employerRepository.findById(employerId).isEmpty()) {
-//            Optional<Employer> someEmployer = employerRepository.findById(employerId);
-//            newJob.setEmployer(someEmployer.get());
-//            // TODO Part 4 UpdatingHomeController, Again ???
-//            List<Skill> skillObjs = (List<Skill>) skillRepository.findAllById(skills);
-//            newJob.setSkills(skillObjs);
-//        }
         return "redirect:";
     }
 
