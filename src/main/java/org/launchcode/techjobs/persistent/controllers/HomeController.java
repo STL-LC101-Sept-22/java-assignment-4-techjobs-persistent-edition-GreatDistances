@@ -57,23 +57,26 @@ public class HomeController {
             return "add";
         }
 
-        // TODO - add some sort of conditional validation here ???
-        // if (employerRepository.findById(employerId).isEmpty()) {
         Optional<Employer> someEmployer = employerRepository.findById(employerId);
         newJob.setEmployer(someEmployer.get());
         List<Skill> skillObjs = (List<Skill>) skillRepository.findAllById(skills);
         newJob.setSkills(skillObjs);
         jobRepository.save(newJob);
-        // }
 
         return "redirect:";
     }
 
     @GetMapping("view/{jobId}")
-    public String displayViewJob(Model model, @PathVariable int jobId) {
+    public String displayViewSkill(Model model, @PathVariable int jobId) {
 
-        return "view";
+        Optional optJob = jobRepository.findById(jobId);
+        if (optJob.isPresent()) {
+            Job job = (Job) optJob.get();
+            model.addAttribute("job", job);
+            return "view";
+        } else {
+            return "redirect:../";
+        }
     }
-
 
 }
