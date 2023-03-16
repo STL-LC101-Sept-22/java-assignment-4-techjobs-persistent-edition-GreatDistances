@@ -16,7 +16,6 @@ public class Skill extends AbstractEntity {
     @Size(min=3, max=50, message="Description must be 3 to 50 characters")
     private String description;
 
-    // TODO add a jobs field.  Part4.
     @ManyToMany(mappedBy="skills")
     private final List<Job> jobs = new ArrayList<>();
 
