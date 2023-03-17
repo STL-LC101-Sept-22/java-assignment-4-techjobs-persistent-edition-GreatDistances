@@ -59,8 +59,8 @@ public class HomeController {
 
         // TODO - get TA input on below code, and possible validation
         // TODO - get TA input on how to prevent crash if no skills are selected (Demo program crashes too)
-        Optional<Employer> someEmployer = employerRepository.findById(employerId);
-        newJob.setEmployer(someEmployer.get());
+        Employer someEmployer = employerRepository.findById(employerId).orElse(new Employer());
+        newJob.setEmployer(someEmployer);
         List<Skill> skillObjs = (List<Skill>) skillRepository.findAllById(skills);
         newJob.setSkills(skillObjs);
         jobRepository.save(newJob);
